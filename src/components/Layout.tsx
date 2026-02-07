@@ -102,14 +102,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <div>
               <h4 className="text-white font-semibold mb-4">Community</h4>
               <ul className="space-y-2 text-slate-400 text-sm">
-                <li><a href="#" className="hover:text-emerald-400">GitHub Discussion</a></li>
-                <li><a href="#" className="hover:text-emerald-400">Issues</a></li>
-                <li><a href="#" className="hover:text-emerald-400">Contribute</a></li>
+                <li><a href="https://github.com/Haryomidey/autosnap-git" target="_blank" className="hover:text-emerald-400">GitHub Discussion</a></li>
+                <li><a href="https://github.com/Haryomidey/autosnap-git/issues" target="_blank" className="hover:text-emerald-400">Issues</a></li>
+                <li><a href="https://github.com/Haryomidey/autosnap-git" target="_blank" className="hover:text-emerald-400">Contribute</a></li>
               </ul>
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs">
-            <p>&copy; {new Date().getFullYear()} Autosnap Git. MIT Licensed.</p>
+            <p>&copy; {new Date().getFullYear()} Autosnap Git.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="hover:text-emerald-400">Privacy Policy</a>
               <a href="#" className="hover:text-emerald-400">Terms of Service</a>

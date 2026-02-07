@@ -166,7 +166,7 @@ const Docs: React.FC = () => {
             
             <h5 className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-slate-500 mt-8 mb-2">Reference</h5>
             <NavItem to="/docs/faq">FAQ</NavItem>
-            <a href="https://github.com" target="_blank" className="flex items-center space-x-2 px-4 py-2 text-slate-400 hover:text-white transition-colors">
+            <a href="https://github.com/Haryomidey/autosnap-git" target="_blank" className="flex items-center space-x-2 px-4 py-2 text-slate-400 hover:text-white transition-colors">
               <span>GitHub</span>
               <ExternalLink size={14} />
             </a>

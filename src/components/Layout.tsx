@@ -39,7 +39,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Link to="/docs" className="text-sm font-medium hover:text-emerald-400 transition-colors">Documentation</Link>
             <Link to="/docs/usage" className="text-sm font-medium hover:text-emerald-400 transition-colors">Usage</Link>
             <Link to="/docs/faq" className="text-sm font-medium hover:text-emerald-400 transition-colors">FAQ</Link>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1 text-sm font-medium hover:text-emerald-400 transition-colors">
+            <a href="https://github.com/Haryomidey/autosnap-git" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1 text-sm font-medium hover:text-emerald-400 transition-colors">
               <Github size={18} />
               <span>GitHub</span>
             </a>

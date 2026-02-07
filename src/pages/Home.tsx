@@ -25,7 +25,7 @@ const Home: React.FC = () => {
             {/* Badge */}
             <div className="inline-flex items-center space-x-2 bg-slate-900 border border-slate-800 px-4 py-1.5 rounded-full text-emerald-400 text-sm font-medium animate-in fade-in slide-in-from-bottom-4 duration-700">
               <Sparkles size={14} className="animate-pulse" />
-              <span>Version 2.0: Now with Intelligent Diffing</span>
+              <span>Version 1.0.0: Now with Intelligent Diffing</span>
             </div>
 
             {/* Main Headline */}
@@ -45,7 +45,7 @@ const Home: React.FC = () => {
                 <span>Start Snapshoting</span>
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a href="https://github.com" className="bg-slate-900 border border-slate-800 hover:bg-slate-800 px-10 py-5 rounded-2xl font-bold transition-all flex items-center justify-center space-x-3 w-full sm:w-auto">
+              <a href="https://github.com/Haryomidey/autosnap-git" className="bg-slate-900 border border-slate-800 hover:bg-slate-800 px-10 py-5 rounded-2xl font-bold transition-all flex items-center justify-center space-x-3 w-full sm:w-auto">
                 <Github size={20} />
                 <span>Star on GitHub</span>
               </a>

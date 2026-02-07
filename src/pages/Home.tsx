@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Camera, Zap, Shield, History, Eye, ArrowRight, CheckCircle2, Package, Terminal as TerminalIcon, Sparkles, Copy, Check } from 'lucide-react';
+import { Zap, Shield, History, Eye, ArrowRight, CheckCircle2, Package, Sparkles, Copy, Check } from 'lucide-react';
 import Terminal from '../components/Terminal';
 
 const Home: React.FC = () => {

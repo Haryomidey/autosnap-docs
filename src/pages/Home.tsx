@@ -25,7 +25,7 @@ const Home: React.FC = () => {
             {/* Badge */}
             <div className="inline-flex items-center space-x-2 bg-slate-900 border border-slate-800 px-4 py-1.5 rounded-full text-emerald-400 text-sm font-medium animate-in fade-in slide-in-from-bottom-4 duration-700">
               <Sparkles size={14} className="animate-pulse" />
-              <span>Version 1.0.0: Now with readable commit messages</span>
+              <span>Version 1.0.1: Now with readable commit messages</span>
             </div>
 
             {/* Main Headline */}

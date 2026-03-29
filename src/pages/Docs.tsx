@@ -27,6 +27,15 @@ const Introduction = () => (
         <strong>Autosnap Git</strong> is a production-ready CLI that removes the friction from Git. 
         It's designed for developers who want to maintain a frequent commit history without the cognitive load of manual <code>git add</code> and <code>git commit</code> cycles.
       </p>
+
+      <div className="p-6 bg-emerald-500/10 rounded-xl border border-emerald-500/20 my-8">
+        <h4 className="font-bold text-emerald-400 mb-3">Readable commit messages</h4>
+        <div className="space-y-2 font-mono text-sm text-slate-300">
+          <div>[CHORE]: update docs</div>
+          <div>[UPDATE]: update cli and docs</div>
+          <div>[OVERHAUL]: update cli, git workflow, and docs</div>
+        </div>
+      </div>
       
       <h2 className="text-2xl font-bold text-white mt-12 mb-4">Quick Install</h2>
       <Terminal commands={[{ cmd: 'npm install -g autosnap-git' }]} />
@@ -65,12 +74,52 @@ const Usage = () => (
       ]} />
     </div>
 
+    <div className="space-y-4">
+      <h3 className="text-xl font-bold text-white">Commit Message Rules</h3>
+      <p className="text-slate-400">
+        Autosnap now writes human-readable commit subjects based on the files changed and the size of the edit.
+        When you do not pass <code>--prefix</code>, the tag is inferred automatically.
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-5 bg-slate-900 rounded-xl border border-slate-800">
+          <h4 className="font-semibold text-slate-200 mb-2">Examples</h4>
+          <div className="space-y-2 font-mono text-sm text-slate-300">
+            <div>[CHORE]: update docs</div>
+            <div>[UPDATE]: update cli and docs</div>
+            <div>[OVERHAUL]: update cli, git workflow, and docs</div>
+          </div>
+        </div>
+      </div>
+      <p className="text-slate-400">
+        The timestamp still appears in CLI output, but it is no longer used as the main commit subject.
+      </p>
+      <Terminal commands={[
+        {
+          cmd: 'autosnap-git --prefix fix',
+          output: '[FIX]: fix cli error handling'
+        }
+      ]} />
+    </div>
+
     <div className="space-y-6">
       <h3 className="text-xl font-bold text-white">Watch Mode</h3>
-      <p className="text-slate-400">Watch mode tracks your file system and commits automatically after a period of inactivity.</p>
+      <p className="text-slate-400">
+        Watch mode tracks your file system and commits automatically after a period of inactivity.
+        If <code>--prefix</code> is not provided, Autosnap can infer the tag automatically before committing.
+      </p>
       <Terminal commands={[
-        { cmd: 'autosnap-git --watch', output: '# 5s default debounce' },
-        { cmd: 'autosnap-git --watch --interval 300', output: '# 5 minute interval' }
+        {
+          cmd: 'autosnap-git --watch',
+          output: [
+            'Watching for changes...',
+            'Snapshot created at 2026-03-29 22:10',
+            'Commit: [CHORE]: update docs'
+          ]
+        },
+        {
+          cmd: 'autosnap-git --watch --prefix fix',
+          output: 'Commit: [FIX]: fix cli validation'
+        }
       ]} />
     </div>
 
@@ -78,10 +127,59 @@ const Usage = () => (
       <h3 className="text-xl font-bold text-white">History & Inspection</h3>
       <Terminal commands={[
         { cmd: 'autosnap-git log', output: 'Shows recent activity summary' },
-        { cmd: 'autosnap-git log -n 10', output: 'Last 10 commits' },
+        { cmd: 'autosnap-git log -n 10', output: 'Recent commits with readable subjects' },
         { cmd: 'autosnap-git diff --stat', output: 'Summary of uncommitted changes' },
         { cmd: 'autosnap-git status', output: 'Clean view of repository status' }
       ]} />
+    </div>
+  </div>
+);
+
+const WatchMode = () => (
+  <div className="space-y-8 animate-in fade-in duration-500">
+    <div className="space-y-2">
+      <h1 className="text-4xl font-bold text-white">Watch Mode</h1>
+      <p className="text-slate-400 text-lg">Automatic snapshots with readable commit subjects.</p>
+    </div>
+
+    <p className="text-slate-400 leading-relaxed">
+      In watch mode, Autosnap observes your project and creates commits after changes settle.
+      If you do not pass <code>--prefix</code>, it can infer a tag automatically from the files changed and how large the edit was.
+    </p>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="p-6 bg-slate-900 rounded-xl border border-slate-800">
+        <h3 className="text-lg font-bold text-white mb-3">Without prefix</h3>
+        <p className="text-sm text-slate-400 mb-4">
+          Autosnap chooses a tag for you.
+        </p>
+        <Terminal commands={[
+          {
+            cmd: 'autosnap-git --watch',
+            output: [
+              'Watching for changes...',
+              'Snapshot created at 2026-03-29 22:10',
+              'Commit: [UPDATE]: update cli and docs'
+            ]
+          }
+        ]} />
+      </div>
+      <div className="p-6 bg-slate-900 rounded-xl border border-slate-800">
+        <h3 className="text-lg font-bold text-white mb-3">With prefix</h3>
+        <p className="text-sm text-slate-400 mb-4">
+          Your chosen tag stays fixed.
+        </p>
+        <Terminal commands={[
+          {
+            cmd: 'autosnap-git --watch --prefix fix',
+            output: [
+              'Watching for changes...',
+              'Snapshot created at 2026-03-29 22:14',
+              'Commit: [FIX]: fix cli validation'
+            ]
+          }
+        ]} />
+      </div>
     </div>
   </div>
 );
@@ -136,6 +234,18 @@ const Faq = () => (
           a: "Simply press Ctrl+C in your terminal to gracefully terminate the watcher."
         },
         {
+          q: "Why did Autosnap change the tag on its own?",
+          a: "If you did not pass --prefix, Autosnap inferred the tag automatically from the changed files and the size of the edit."
+        },
+        {
+          q: "Can I still force tags like [FIX]?",
+          a: "Yes. Pass --prefix fix and Autosnap will keep using [FIX] instead of inferring a tag."
+        },
+        {
+          q: "Are timestamps gone completely?",
+          a: "No. The timestamp is still shown in CLI output, but it is no longer used as the main commit subject."
+        },
+        {
           q: "Can I use it with existing repos?",
           a: "Absolutely. Autosnap works with any directory. If it's not already a Git repo, it will offer to initialize it for you."
         }
@@ -180,7 +290,7 @@ const Docs: React.FC = () => {
             <Route path="usage" element={<Usage />} />
             <Route path="safety" element={<Safety />} />
             <Route path="faq" element={<Faq />} />
-            <Route path="watch" element={<Usage />} /> {/* Reusing for simplicity */}
+            <Route path="watch" element={<WatchMode />} />
           </Routes>
 
           {/* Pagination */}

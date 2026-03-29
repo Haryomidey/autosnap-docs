@@ -25,7 +25,7 @@ const Home: React.FC = () => {
             {/* Badge */}
             <div className="inline-flex items-center space-x-2 bg-slate-900 border border-slate-800 px-4 py-1.5 rounded-full text-emerald-400 text-sm font-medium animate-in fade-in slide-in-from-bottom-4 duration-700">
               <Sparkles size={14} className="animate-pulse" />
-              <span>Version 1.0.0: Now with Intelligent Diffing</span>
+              <span>Version 1.0.0: Now with readable commit messages</span>
             </div>
 
             {/* Main Headline */}
@@ -62,7 +62,8 @@ const Home: React.FC = () => {
                       'Watcher active: monitoring src/',
                       'Event detected: App.tsx modified',
                       'Debouncing (5s)...',
-                      'Snapshotted: Auto snapshot: 2024-05-20 14:30'
+                      'Snapshot created at 2026-03-29 22:10',
+                      'Commit: [UPDATE]: update cli and docs'
                     ]
                   }
                 ]}
@@ -101,7 +102,7 @@ const Home: React.FC = () => {
             {
               icon: <History className="text-purple-500" />,
               title: "Friendly History",
-              desc: "Get a human-readable view of your logs and diffs directly in the CLI."
+              desc: "Readable commit subjects based on changed files and edit size, not timestamp-heavy snapshots."
             },
             {
               icon: <CheckCircle2 className="text-emerald-500" />,
@@ -156,7 +157,7 @@ const Home: React.FC = () => {
                 commands={[
                   { cmd: 'autosnap-git status', output: 'Status: 2 files changed, 1 file deleted' },
                   { cmd: 'autosnap-git diff --stat', output: ['src/App.tsx | 12 +++--', 'src/utils.ts |  4 +--'] },
-                  { cmd: 'autosnap-git log -n 1', output: 'Commit: c8a3b2f - Auto snapshot: 2024-05-20 14:45' }
+                  { cmd: 'autosnap-git log -n 1', output: 'Commit: c8a3b2f - [UPDATE]: update cli and docs' }
                 ]}
                 title="CLI Explorer"
                 className="relative"

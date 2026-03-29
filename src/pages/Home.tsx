@@ -35,7 +35,7 @@ const Home: React.FC = () => {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">Autopilot.</span>
               </h1>
               <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
-                Automated git snapshots that capture every breakthrough without the manual overhead. The ultimate safety net for modern developers.
+                Automated Git snapshots that remove the hassle of repeated <code>git add .</code>, <code>git commit</code>, and writing commit messages by hand.
               </p>
             </div>
 
@@ -87,7 +87,7 @@ const Home: React.FC = () => {
             {
               icon: <Zap className="text-emerald-500" />,
               title: "Instant Snapshots",
-              desc: "Automatically commits only when changes exist. No empty commits, no noise."
+              desc: "Automatically stages and commits real changes so you do not have to keep doing the same Git steps by hand."
             },
             {
               icon: <Eye className="text-blue-500" />,
@@ -133,7 +133,7 @@ const Home: React.FC = () => {
             <div className="space-y-8">
               <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">Automate without fear.</h2>
               <p className="text-slate-400 text-lg leading-relaxed font-medium">
-                Autosnap Git is designed with a safety-first mindset. It respects your <code>.gitignore</code> and explicitly blocks sensitive patterns to ensure your secrets stay secret.
+                Autosnap Git is built for the moments when you want to save progress but do not want to break focus for <code>git add .</code>, <code>git commit</code>, and message-writing. It respects your <code>.gitignore</code> and explicitly blocks sensitive patterns to ensure your secrets stay secret.
               </p>
               <ul className="space-y-5">
                 {[

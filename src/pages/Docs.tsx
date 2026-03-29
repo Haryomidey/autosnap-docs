@@ -20,12 +20,15 @@ const Introduction = () => (
   <div className="space-y-8 animate-in fade-in duration-500">
     <div className="space-y-2">
       <h1 className="text-4xl font-bold text-white">Introduction</h1>
-      <p className="text-slate-400 text-lg">Automate Git snapshots and keep a clean view of your commit history.</p>
+      <p className="text-slate-400 text-lg">Stop repeating Git busywork and keep a clean, readable commit history.</p>
     </div>
     <div className="prose prose-invert max-w-none">
       <p>
         <strong>Autosnap Git</strong> is a production-ready CLI that removes the friction from Git. 
-        It's designed for developers who want to maintain a frequent commit history without the cognitive load of manual <code>git add</code> and <code>git commit</code> cycles.
+        It's designed for developers who want to keep frequent snapshots without constantly stopping to run <code>git add .</code>, <code>git commit</code>, and think of a commit message every time.
+      </p>
+      <p>
+        That small workflow overhead adds up fast during real work. Autosnap takes that hassle away by staging changes, creating the snapshot, and generating a readable commit subject for you.
       </p>
 
       <div className="p-6 bg-emerald-500/10 rounded-xl border border-emerald-500/20 my-8">
@@ -67,6 +70,9 @@ const Usage = () => (
     
     <div className="space-y-6">
       <h3 className="text-xl font-bold text-white">Basic Commands</h3>
+      <p className="text-slate-400">
+        Instead of interrupting your flow to stage files, write a commit, and come up with a message, you can let Autosnap handle the routine steps for you.
+      </p>
       <Terminal commands={[
         { cmd: 'autosnap-git', output: '# creates a snapshot if changes exist' },
         { cmd: 'autosnap-git --dry-run', output: '# preview without committing' },
@@ -145,6 +151,7 @@ const WatchMode = () => (
     <p className="text-slate-400 leading-relaxed">
       In watch mode, Autosnap observes your project and creates commits after changes settle.
       If you do not pass <code>--prefix</code>, it can infer a tag automatically from the files changed and how large the edit was.
+      That means you do not have to keep remembering when to run Git commands or what to write as the message while you are in the middle of coding.
     </p>
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -224,6 +231,10 @@ const Faq = () => (
         {
           q: "Why didn't Autosnap create a commit?",
           a: "Either no changes were detected in the tracked files, or sensitive files were found and the process was blocked for safety."
+        },
+        {
+          q: "What problem does Autosnap actually solve?",
+          a: "It removes the repetitive Git routine of running git add ., git commit, and stopping to think of a commit message whenever you want to save progress."
         },
         {
           q: "Does Autosnap respect .gitignore?",
